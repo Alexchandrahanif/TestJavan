@@ -185,6 +185,7 @@ class Controller {
 
   // UPDATE COUNT BY ID AND REQ.BODY
   static async updateCount(req, res, next) {
+    // ini untuk merubah count dari asset menggunakan req.body
     try {
       const { id } = req.params;
       const { count } = req.body;
@@ -215,7 +216,7 @@ class Controller {
     }
   }
 
-  // Count Price
+  // Count Price Asset
   static async countPrice(req, res, next) {
     try {
       const id = req.params.UserId;

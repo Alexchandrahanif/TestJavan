@@ -99,5 +99,31 @@ class Controller {
       next(error);
     }
   }
+
+  // DELETE ASSET
+  static async deleteAsset(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      // Validasi
+      const data = await Asset.findByPk(id);
+      if (!data) {
+        throw { name: "Data Asset Not Found", id: id };
+      }
+
+      const dataAsset = await Asset.destroy({
+        where: {
+          id,
+        },
+      });
+
+      res.status(200).json({
+        statusCode: 200,
+        message: "Delete Asset Successfullly",
+      });
+    } catch (error) {
+      next(err);
+    }
+  }
 }
 module.exports = Controller;

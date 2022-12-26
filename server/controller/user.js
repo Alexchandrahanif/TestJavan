@@ -34,5 +34,28 @@ class Controller {
       next(error);
     }
   }
+
+  // CREATE USER
+  static async createUser(req, res, next) {
+    try {
+      const { name, gender, parentId } = req.body;
+      // catatan :
+      // parentId disini harus dinamis, supaya bisa menentukan siapa orang tua nya
+      // di front end harus find lagi semua user, untuk medapatkan id nya, agar dinamis
+
+      const dataUser = await User.create({
+        name,
+        gender,
+        parentId,
+      });
+
+      res.status(201).json({
+        statusCode: 201,
+        data: dataUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 module.exports = Controller;

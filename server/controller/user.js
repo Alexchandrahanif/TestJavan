@@ -65,6 +65,12 @@ class Controller {
       const { id } = req.params;
       const { name, gender, parentId } = req.body;
 
+      //validasi id user
+      const data = await User.findByPk(id);
+      if (!data) {
+        throw { name: "Data User Not Found", id: id };
+      }
+
       // disini juga sama, untuk parent id nya harus dinamis
       const dataUser = await User.update(
         {

@@ -11,8 +11,11 @@ const handleError = (err, req, res, next) => {
     err.errors.forEach((el) => {
       message.push(el.message);
     });
+  } else if (err.name === "Data User Not Found") {
+    (code = 400), (message = `Data User With Id ${err.id} Not Found`);
   }
   res.status(code).json({
+    statusCode: code,
     message: message,
   });
 };

@@ -126,7 +126,7 @@ class Controller {
     }
   }
 
-  // DECREMENT ASSET
+  // DECREMENT COUNT ASSET
   static async decrementAsset(req, res, next) {
     try {
       const { id } = req.params;
@@ -157,7 +157,7 @@ class Controller {
     }
   }
 
-  // INCREMENT ASSET
+  // INCREMENT COUNT ASSET
   static async incrementAsset(req, res, next) {
     try {
       const { id } = req.params;
@@ -179,6 +179,55 @@ class Controller {
       });
     } catch (error) {
       console.log(error);
+      next(error);
+    }
+  }
+
+  // UPDATE COUNT BY ID AND REQ.BODY
+  static async updateCount(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { count } = req.body;
+
+      // Validasi
+      const data = await Asset.findByPk(id);
+      if (!data) {
+        throw { name: "Data Asset Not Found", id: id };
+      }
+
+      const dataAsset = await Asset.update(
+        {
+          count: count,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+
+      res.status(200).json({
+        statusCode: 200,
+        message: "Success update count asset",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // Count Price
+  static async countPrice(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      // Validasi
+      const data = await Asset.findByPk(id);
+      if (!data) {
+        throw { name: "Data Asset Not Found", id: id };
+      }
+
+      
+    } catch (error) {
       next(error);
     }
   }

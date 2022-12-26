@@ -51,7 +51,34 @@ class Controller {
 
       res.status(201).json({
         statusCode: 201,
+        message: "Create new User Successfully",
         data: dataUser,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // UPDATE USER
+  static async editUser(req, res, next) {
+    try {
+      const { id } = req.params;
+      const { name, gender, parentId } = req.body;
+
+      // disini juga sama, untuk parent id nya harus dinamis
+      const dataUser = await User.update(
+        {
+          name,
+          gender,
+          parentId,
+        },
+        {
+          where: { id },
+        }
+      );
+      res.status(200).json({
+        statusCode: 200,
+        message: "Update User Successfully",
       });
     } catch (error) {
       next(error);

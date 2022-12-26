@@ -125,5 +125,62 @@ class Controller {
       next(err);
     }
   }
+
+  // DECREMENT ASSET
+  static async decrementAsset(req, res, next) {
+    try {
+      const { id } = req.params;
+      const dataAsset = await Asset.findByPk(id);
+
+      //Validasi Id
+      if (!dataAsset) {
+        throw { name: "Data Asset Not Found", id: id };
+      }
+
+      console.log(dataAsset.count, "jumlah");
+      // Validasi supaya jumlah tidak kurang dari 1
+      if (dataAsset.count <= 1) {
+        throw { name: "Invalid" };
+      }
+
+      // Decrement
+      await dataAsset.decrement({
+        count: 1,
+      });
+
+      res.status(200).json({
+        statusCode: 200,
+        message: "Success decrement data Asset",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  // INCREMENT ASSET
+  static async incrementAsset(req, res, next) {
+    try {
+      const { id } = req.params;
+      const dataAsset = await Asset.findByPk(id);
+
+      // Validasi Id
+      if (!dataAsset) {
+        throw { name: "Data Asset Not Found", id: id };
+      }
+
+      // Increment
+      await dataAsset.increment({
+        count: 1,
+      });
+
+      res.status(200).json({
+        statusCode: 200,
+        message: "Success increment data Asset",
+      });
+    } catch (error) {
+      console.log(error);
+      next(error);
+    }
+  }
 }
 module.exports = Controller;

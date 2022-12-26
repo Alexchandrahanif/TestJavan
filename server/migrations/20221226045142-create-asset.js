@@ -17,6 +17,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      count: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1,
+        allowNull: false,
+      },
       UserId: {
         type: Sequelize.INTEGER,
         references: {

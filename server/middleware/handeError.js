@@ -13,6 +13,8 @@ const handleError = (err, req, res, next) => {
     });
   } else if (err.name === "Data User Not Found") {
     (code = 400), (message = `Data User With Id ${err.id} Not Found`);
+  } else if (err.name === "Data Asset Not Found") {
+    (code = 400), (message = `Data Asset With Id ${err.id} Not Found`);
   }
   res.status(code).json({
     statusCode: code,

@@ -26,6 +26,11 @@ class Controller {
         },
         include: Asset,
       });
+
+      // validasi ketika id tidak ditemukan
+      if (!data) {
+        throw { name: "Data User Not Found", id: id };
+      }
       res.status(200).json({
         statusCode: 200,
         data: dataUser,

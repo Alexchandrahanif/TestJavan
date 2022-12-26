@@ -35,5 +35,27 @@ class Controller {
       next(error);
     }
   }
+
+  // CREATE ASSET
+  static async createAsset(req, res, next) {
+    try {
+      const { name, price, UserId } = req.body;
+      // untuk UserId juga harus dinamis
+      // Apabila menambahkan asset dilakukan oleh super admin, maka bisa di find dlu user nya
+      // Apabila menambahkan asset dilakukan oleh user sendiri, maka UserId bisa di ambil dari req.user dari token Atau JWT
+
+      const dataAsset = await Asset.create({
+        name,
+        price,
+        UserId,
+      });
+      res.status(201).json({
+        statusCode: 201,
+        data: dataAsset,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 module.exports = Controller;

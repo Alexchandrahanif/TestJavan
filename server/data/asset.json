@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Samsung Universe 9",
+    "price": 1249,
+    "UserId": 2
+  },
+  {
+    "name": "Samsung Galaxy Book",
+    "price": 1499,
+    "UserId": 2
+  },
+  {
+    "name": "iPhone 9",
+    "price": 549,
+    "UserId": 3
+  },
+  {
+    "name": "iPhone X",
+    "price": 899,
+    "UserId": 4
+  },
+  {
+    "name": "Huawei P30",
+    "price": 499,
+    "UserId": 5
+  },
+  {
+    "name": "Samsung Universe 9",
+    "price": 1249,
+    "UserId": 6
+  },
+  {
+    "name": "Huawei P30",
+    "price": 499,
+    "UserId": 7
+  },
+  {
+    "name": "iPhone X",
+    "price": 899,
+    "UserId": 7
+  },
+  {
+    "name": "Samsung Universe 9",
+    "price": 1249,
+    "UserId": 8
+  },
+  {
+    "name": " Samsung Galaxy Book",
+    "price": 1499,
+    "UserId": 9
+  },
+  {
+    "name": "Huawei P30",
+    "price": 499,
+    "UserId": 10
+  },
+  {
+    "name": "iPhone X",
+    "price": 899,
+    "UserId": 11
+  }
+]

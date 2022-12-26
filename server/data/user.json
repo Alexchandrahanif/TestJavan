@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Bani",
+    "gender": "Male",
+    "parentId": null
+  },
+  {
+    "name": "Budi",
+    "gender": "Male",
+    "parentId": 1
+  },
+  {
+    "name": "Nida",
+    "gender": "Female",
+    "parentId": 1
+  },
+  {
+    "name": "Sigit",
+    "gender": "Male",
+    "parentId": 1
+  },
+  {
+    "name": "Hari",
+    "gender": "Male",
+    "parentId": 2
+  },
+  {
+    "name": "Siti",
+    "gender": "Female",
+    "parentId": 2
+  },
+  {
+    "name": "Bila",
+    "gender": "Female",
+    "parentId": 3
+  },
+  {
+    "name": "Lesti",
+    "gender": "Female",
+    "parentId": 3
+  },
+  {
+    "name": "Diki",
+    "gender": "Male",
+    "parentId": 4
+  },
+  {
+    "name": "Doni",
+    "gender": "Male",
+    "parentId": 4
+  },
+  {
+    "name": "Toni",
+    "gender": "Male",
+    "parentId": 5
+  }
+]

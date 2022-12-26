@@ -218,17 +218,32 @@ class Controller {
   // Count Price
   static async countPrice(req, res, next) {
     try {
-      const { id } = req.params;
+      const id = req.params.UserId;
 
       // Validasi
-      const data = await Asset.findByPk(id);
-      if (!data) {
-        throw { name: "Data Asset Not Found", id: id };
+      const dataUser = await User.findByPk(id);
+      const data = await Asset.findAll({
+        where: {
+          UserId: id,
+        },
+      });
+      if (!dataUser) {
+        throw { name: "Data User Not Found", id: id };
       }
+      let totalPrice = 0;
+      data.forEach((el) => {
+        let temp = el.price * el.count;
+        totalPrice += temp;
+      });
 
-      
+      res.status(200).json({
+        statusCode: 200,
+        data: data,
+        totalPrice: totalPrice,
+      });
     } catch (error) {
       next(error);
+      console.log(error);
     }
   }
 }

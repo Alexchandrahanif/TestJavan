@@ -4,6 +4,7 @@ const assetRouter = require("express").Router();
 
 assetRouter.get("/", Controller.getAssets);
 assetRouter.get("/:id", Controller.getAsset);
+assetRouter.get("/totalPrice/:UserId", Controller.countPrice);
 assetRouter.post("/", Controller.createAsset);
 assetRouter.patch("/:id", Controller.editAsset);
 assetRouter.patch("/increment/:id", Controller.incrementAsset);

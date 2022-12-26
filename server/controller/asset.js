@@ -221,16 +221,20 @@ class Controller {
     try {
       const id = req.params.UserId;
 
-      // Validasi
+      // Validasi User ada atau tidak
       const dataUser = await User.findByPk(id);
+
+      if (!dataUser) {
+        throw { name: "Data User Not Found", id: id };
+      }
+      // mendapatkan asset berdasarkan user / asset-assetn yg dimiliki user
       const data = await Asset.findAll({
         where: {
           UserId: id,
         },
       });
-      if (!dataUser) {
-        throw { name: "Data User Not Found", id: id };
-      }
+
+      // logic untuk menghitung total price
       let totalPrice = 0;
       data.forEach((el) => {
         let temp = el.price * el.count;

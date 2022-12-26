@@ -16,7 +16,7 @@ const handleError = (err, req, res, next) => {
   }
   res.status(code).json({
     statusCode: code,
-    message: message,
+    message,
   });
 };
 

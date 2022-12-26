@@ -90,5 +90,33 @@ class Controller {
       next(error);
     }
   }
+
+  // DELETE USER
+  static async deleteUser(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      //validasi id user
+      const data = await User.findByPk(id);
+      if (!data) {
+        throw { name: "Data User Not Found", id: id };
+      }
+
+      const dataUser = await User.destroy({
+        where: {
+          id,
+        },
+      });
+
+      console.log("dkwodk");
+
+      res.status(200).json({
+        statusCode: 200,
+        message: "Delete User Successfully",
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
 module.exports = Controller;
